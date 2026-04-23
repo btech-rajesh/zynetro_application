@@ -13,6 +13,17 @@ body {
 @layer components {
   .btn-primary {
     @apply px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-900/30;
+    background: linear-gradient(135deg, rgb(234, 88, 12) 0%, rgb(217, 70, 8) 100%);
+    box-shadow: 
+      0 20px 25px rgba(234, 88, 12, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, rgb(249, 115, 22) 0%, rgb(234, 88, 12) 100%);
+    box-shadow: 
+      0 25px 35px rgba(234, 88, 12, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
   .btn-secondary {
@@ -35,6 +46,15 @@ body {
   /* Section and card styles */
   .section-card {
     @apply bg-gray-900 rounded-2xl p-8 sm:p-12 border border-gray-800;
+    background: 
+      linear-gradient(135deg, rgba(234, 88, 12, 0.08) 0%, rgba(52, 211, 153, 0.05) 100%),
+      linear-gradient(to right, rgba(17, 24, 39, 1) 0%, rgba(31, 41, 55, 0.8) 50%, rgba(17, 24, 39, 1) 100%),
+      rgb(17, 24, 39);
+    backdrop-filter: blur(1px);
+    box-shadow: 
+      inset 0 1px 3px rgba(234, 88, 12, 0.1),
+      inset -1px -1px 3px rgba(52, 211, 153, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.5);
   }
 
   .confirmation-card {
@@ -77,9 +97,29 @@ body {
 
   .primary-link {
     @apply px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-900/30 inline-block text-center;
+    background: linear-gradient(135deg, rgb(234, 88, 12) 0%, rgb(217, 70, 8) 100%);
+    box-shadow: 
+      0 20px 25px rgba(234, 88, 12, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .primary-link:hover {
+    background: linear-gradient(135deg, rgb(249, 115, 22) 0%, rgb(234, 88, 12) 100%);
+    box-shadow: 
+      0 25px 35px rgba(234, 88, 12, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
   .secondary-link {
     @apply px-6 py-3 border border-white/20 hover:border-white/40 text-gray-300 hover:text-white rounded-xl transition-colors font-medium inline-block text-center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(52, 211, 153, 0.03) 100%);
+    box-shadow: inset 0 1px 2px rgba(52, 211, 153, 0.1);
+  }
+
+  .secondary-link:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(52, 211, 153, 0.08) 100%);
+    box-shadow: 
+      inset 0 1px 2px rgba(52, 211, 153, 0.15),
+      0 10px 20px rgba(52, 211, 153, 0.1);
   }
 }
