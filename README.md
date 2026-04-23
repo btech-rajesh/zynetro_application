@@ -1,5 +1,7 @@
 # Zynetra Application (MVP Foundation)
 
+Zynetra builds premium service funnels, scalable backend systems, and AI automation that help businesses move from scattered execution to predictable digital growth.
+
 This repository includes a frontend and backend foundation aligned with the Zynetra architecture agent.
 
 ## Stack
