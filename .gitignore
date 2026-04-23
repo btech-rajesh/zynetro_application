@@ -1,0 +1,109 @@
+node_modules/
+.next/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.log
+logs/
+coverage/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Build & Runtime
+.next/
+.vercel/
+out/
+.turbo/
+dist/
+build/
+
+# Package Manager
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Testing
+.nyc_output/
+.coverage/
+jest.html
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Config & Secrets
+.env*
+!.env.example
+config/secrets.js
+
+# Temporary & Cache
+tmp/
+temp/
+.cache/
+.parcel-cache/
+.eslintcache/
+
+# Node/NPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE Workspace
+.history/
+*.code-workspace
+
+# Agent & AI Related
+.agent/
+.agents/
+agent_config/
+agent_logs/
+agent_cache/
+.copilot/
+.copilot-chat/
+*.agent.json
+agent_state/
+ai_cache/
+llm_logs/
+model_cache/
+.mcp/
+mcp_cache/
+agents_build/
+
+# Images & Media
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.ico
+*.bmp
+*.tiff
+*.tif
+*.psd
+*.ai
+public/images/**
+uploads/
+media/
+assets/images/

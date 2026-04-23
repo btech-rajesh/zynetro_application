@@ -1,0 +1,85 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-950 text-gray-100 antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-900/30;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-white/20 hover:border-white/40 text-gray-300 hover:text-white rounded-xl transition-colors font-medium;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Page layout */
+  .page-shell {
+    @apply min-h-screen py-16 px-4 sm:px-6 lg:px-8;
+  }
+
+  .narrow-shell {
+    @apply max-w-2xl mx-auto;
+  }
+
+  /* Section and card styles */
+  .section-card {
+    @apply bg-gray-900 rounded-2xl p-8 sm:p-12 border border-gray-800;
+  }
+
+  .confirmation-card {
+    @apply text-center space-y-6;
+  }
+
+  .confirmation-card h1 {
+    @apply text-3xl sm:text-4xl font-bold text-white mt-4;
+  }
+
+  .confirmation-card > p {
+    @apply text-gray-300 text-lg leading-relaxed;
+  }
+
+  .eyebrow {
+    @apply text-orange-500 font-semibold text-sm uppercase tracking-wider;
+  }
+
+  /* Meta info section */
+  .confirmation-meta {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 my-8 py-8 border-y border-gray-800;
+  }
+
+  .confirmation-meta > div {
+    @apply space-y-2;
+  }
+
+  .confirmation-meta h3 {
+    @apply text-white text-xl font-semibold;
+  }
+
+  .pill {
+    @apply inline-block bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  /* CTA actions */
+  .cta-actions {
+    @apply flex flex-col sm:flex-row gap-4 justify-center mt-8;
+  }
+
+  .primary-link {
+    @apply px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-900/30 inline-block text-center;
+  }
+
+  .secondary-link {
+    @apply px-6 py-3 border border-white/20 hover:border-white/40 text-gray-300 hover:text-white rounded-xl transition-colors font-medium inline-block text-center;
+  }
+}
