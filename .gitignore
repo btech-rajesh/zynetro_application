@@ -54,7 +54,6 @@ jest.html
 
 # Config & Secrets
 .env*
-!.env.example
 config/secrets.js
 
 # Temporary & Cache
@@ -74,6 +73,7 @@ yarn-error.log*
 *.code-workspace
 
 # Agent & AI Related
+.github/agents/
 .agent/
 .agents/
 agent_config/
