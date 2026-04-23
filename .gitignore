@@ -54,6 +54,7 @@ jest.html
 
 # Config & Secrets
 .env*
+!apps/backend/.env.example
 config/secrets.js
 
 # Temporary & Cache
