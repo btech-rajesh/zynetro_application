@@ -112,7 +112,7 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════ WHO WE ARE */}
-      <section className="bg-white py-20">
+      <section className="section-light py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -143,7 +143,7 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════ SERVICES */}
-      <section className="bg-gray-50 py-20" id="services">
+      <section className="section-light-gray py-20" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold tracking-widest text-orange-600 uppercase mb-3">Services</p>
@@ -180,7 +180,7 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════ APPROACH */}
-      <section className="bg-white py-20" id="approach">
+      <section className="section-light py-20" id="approach">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -230,7 +230,7 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════ AI SECTION */}
-      <section className="bg-gray-50 py-20" id="ai">
+      <section className="section-light-gray py-20" id="ai">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold tracking-widest text-orange-600 uppercase mb-3">AI Solutions</p>
@@ -252,7 +252,7 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════ FOUNDER */}
-      <section className="bg-white py-20">
+      <section className="section-light py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
