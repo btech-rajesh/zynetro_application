@@ -18,22 +18,44 @@ const configuredOrigins = (process.env.FRONTEND_ORIGIN || "http://localhost:3000
   .split(",")
   .map((origin) => origin.trim().replace(/\/$/, ""))
   .filter(Boolean);
+const configuredOriginPatterns = (process.env.FRONTEND_ORIGIN_PATTERNS || "")
+  .split(",")
+  .map((pattern) => pattern.trim())
+  .filter(Boolean)
+  .map((pattern) => {
+    const escaped = pattern
+      .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
+      .replace(/\*/g, ".*");
+
+    return new RegExp(`^${escaped}$`, "i");
+  });
+
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return true;
+  }
+
+  const normalizedOrigin = origin.replace(/\/$/, "");
+
+  if (configuredOrigins.includes(normalizedOrigin)) {
+    return true;
+  }
+
+  return configuredOriginPatterns.some((pattern) => pattern.test(normalizedOrigin));
+}
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin) {
+      if (isAllowedOrigin(origin)) {
         return callback(null, true);
       }
 
-      const normalizedOrigin = origin.replace(/\/$/, "");
-      if (configuredOrigins.includes(normalizedOrigin)) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("CORS origin not allowed"));
+      const corsError = new Error("CORS origin not allowed");
+      corsError.status = 403;
+      return callback(corsError);
     },
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true
   })
 );
@@ -230,7 +252,17 @@ app.get("/api/v1/appointments/available-slots", async (req, res, next) => {
 app.use((err, _req, res, _next) => {
   // Keep error payload minimal to avoid leaking internal details.
   console.error("Unhandled error", err);
-  res.status(500).json({ message: "Internal server error" });
+  const status = Number(err.status || err.statusCode || 500);
+
+  if (err.type === "entity.parse.failed" || status === 400) {
+    return res.status(400).json({ message: "Invalid JSON payload" });
+  }
+
+  if (status === 403) {
+    return res.status(403).json({ message: "Request origin is not allowed" });
+  }
+
+  return res.status(500).json({ message: "Internal server error" });
 });
 
 async function startServer() {

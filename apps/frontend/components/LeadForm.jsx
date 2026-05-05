@@ -36,7 +36,10 @@ export default function LeadForm() {
       });
       router.push(`/booking-confirmation?leadId=${encodeURIComponent(response.data.id)}`);
     } catch (err) {
-      setError(err.message);
+      const firstFieldError = err?.details
+        ? Object.values(err.details).flat().find(Boolean)
+        : '';
+      setError(firstFieldError || err.message || 'Failed to submit consultation request.');
       setStatus('idle');
     }
   };

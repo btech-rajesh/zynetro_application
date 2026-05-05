@@ -1,5 +1,45 @@
-﻿const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://zynetro-application-3.onrender.com";
+﻿const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+  || (process.env.NODE_ENV === "development"
+    ? "http://localhost:4000"
+    : "https://zynetro-application-3.onrender.com");
+
+async function readPayload(response) {
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    return null;
+  }
+
+  try {
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+async function requestJson(path, options = {}) {
+  let response;
+
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, options);
+  } catch (error) {
+    const networkError = new Error(
+      "Unable to reach the API. Check backend URL, CORS origin settings, and network availability."
+    );
+    networkError.cause = error;
+    throw networkError;
+  }
+
+  const payload = await readPayload(response);
+
+  if (!response.ok) {
+    const error = new Error(payload?.message || `Request failed with status ${response.status}`);
+    error.details = payload?.errors || {};
+    error.status = response.status;
+    throw error;
+  }
+
+  return payload;
+}
 
 export async function fetchServices() {
   const response = await fetch(`${API_BASE_URL}/api/v1/services`, {
@@ -15,43 +55,23 @@ export async function fetchServices() {
 }
 
 export async function createLead(input) {
-  const response = await fetch(`${API_BASE_URL}/api/v1/leads`, {
+  return requestJson("/api/v1/leads", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(input)
   });
-
-  const payload = await response.json();
-
-  if (!response.ok) {
-    const error = new Error(payload.message || "Lead submission failed");
-    error.details = payload.errors || {};
-    throw error;
-  }
-
-  return payload;
 }
 
 export async function createAppointment(input) {
-  const response = await fetch(`${API_BASE_URL}/api/v1/appointments`, {
+  return requestJson("/api/v1/appointments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(input)
   });
-
-  const payload = await response.json();
-
-  if (!response.ok) {
-    const error = new Error(payload.message || "Appointment scheduling failed");
-    error.details = payload.errors || {};
-    throw error;
-  }
-
-  return payload;
 }
 
 export async function getAvailableSlots(date) {
@@ -68,37 +88,21 @@ export async function getAvailableSlots(date) {
 }
 
 export async function registerUser(name, email, password, confirmPassword) {
-  const response = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
+  return requestJson("/api/v1/auth/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ name, email, password, confirmPassword })
   });
-
-  const payload = await response.json();
-
-  if (!response.ok) {
-    throw new Error(payload.message || "Registration failed");
-  }
-
-  return payload;
 }
 
 export async function loginUser(email, password) {
-  const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
+  return requestJson("/api/v1/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ email, password })
   });
-
-  const payload = await response.json();
-
-  if (!response.ok) {
-    throw new Error(payload.message || "Login failed");
-  }
-
-  return payload;
 }

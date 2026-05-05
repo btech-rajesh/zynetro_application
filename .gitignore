@@ -108,3 +108,7 @@ public/images/**
 uploads/
 media/
 assets/images/
+
+# Keep Next.js public assets versioned for deployment
+!apps/frontend/public/**
+!apps/frontend/public/**/*
